@@ -18,6 +18,11 @@ class App extends Component {
     .then(response => response.json())
     .then(users => this.setState({monsters: users}))
   }
+
+  handleChange = (e) =>{
+    this.setState({searchBar: e.target.value})
+  }
+
   render(){
     const { monsters, searchBar } = this.state;
     const filteredMonsters = monsters.filter(monster =>
@@ -27,7 +32,7 @@ class App extends Component {
           <h1>Monster Rolodex</h1>
           <SearchBar 
             placeholder='search monster'
-            handleChange={e =>this.setState({searchBar: e.target.value})}
+            handleChange={this.handleChange}
           />
           {/* <input type="search"  placeholder='search monster' 
           onChange={
